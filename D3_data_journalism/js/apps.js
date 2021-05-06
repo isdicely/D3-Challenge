@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
-var margin = { top: 10, right: 30, bottom: 50, left: 60 },
-  width = 1000 - margin.left - margin.right,
-  height = 900 - margin.top - margin.bottom;
+var margin = { top: 50, right: 30, bottom: 50, left: 60 },
+  width = 960 - margin.left - margin.right,
+  height = 600 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3
@@ -99,22 +99,30 @@ d3.csv("data/data.csv").then((d) => {
     .text(function (d) {
       return d.abbr;
     });
+
+  // Add X axis label:
+  svg
+    .append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height + margin.top - 5)
+    .text("Age (Median)");
+
+  // Add Y axis label:
+  svg
+    .append("text")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left + 20)
+    .attr("x", -margin.top)
+    .text("Obese(%)");
+
+  svg
+    .append("text")
+    .attr("x", width / 2)
+    .attr("y", 0 - margin.top / 2)
+    .attr("text-anchor", "middle")
+    .style("font-size", "16px")
+    .style("text-decoration", "underline")
+    .text("Obesity and Age by State (2014)");
 });
-
-// Add X axis label:
-svg
-  .append("text")
-  .attr("text-anchor", "end")
-  .attr("x", width)
-  .attr("y", height + margin.top + 20)
-  .text("Age (Median)");
-
-// Add Y axis label:
-svg
-  .append("text")
-  .attr("text-anchor", "end")
-  .attr("transform", "rotate(-90)")
-  .attr("y", -margin.left + 20)
-  .attr("x", -margin.top)
-  .text("Obese(%)");
-console.log(data);
