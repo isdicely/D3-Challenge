@@ -100,6 +100,8 @@ d3.csv("data/data.csv").then((d) => {
       return d.abbr;
     });
 
+      
+
   // Add X axis label:
   svg
     .append("text")
